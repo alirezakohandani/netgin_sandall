@@ -40,6 +40,13 @@
                         </form>
                     </div>
                 </div>
+                @guest
+                <div class="col-md-4 col-6 topbar-left">
+                    <a class="btn btn-info float-left mr-2" href="" >ورود</a>
+                    <a class="btn btn-info float-left mr-2" href="">ثبت‌نام</a>
+                </div> 
+                @endguest
+                @auth
                 <div class="col-md-4 col-6 topbar-left">
                     <ul class="nav float-left">
                         <li class="nav-item account dropdown">
@@ -67,6 +74,7 @@
                         </li>
                     </ul>
                 </div>
+                @endauth
             </div>
         </div>
     </div>
