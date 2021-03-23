@@ -43,7 +43,7 @@
                 @guest
                 <div class="col-md-4 col-6 topbar-left">
                     <a class="btn btn-info float-left mr-2" href="" >ورود</a>
-                    <a class="btn btn-info float-left mr-2" href="">ثبت‌نام</a>
+                    <a class="btn btn-info float-left mr-2" href="{{route('auth.register.form')}}">ثبت‌نام</a>
                 </div> 
                 @endguest
                 @auth

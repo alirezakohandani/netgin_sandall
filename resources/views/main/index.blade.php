@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
 <main class="main-content dt-sl mt-4 mb-3">
+    @include('partials.alerts')
     <div class="container main-container">
 
         <!-- Start Main-Slider -->
