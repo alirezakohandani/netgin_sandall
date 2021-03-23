@@ -33,6 +33,7 @@
                                 اگر قبلا با ایمیل ثبت‌نام کرده‌اید، نیاز به ثبت‌نام مجدد با شماره همراه ندارید
                             </div>
                             <form action="">
+                                @include('partials.alerts')
                                 <div class="form-row-title">
                                     <h3>ایمیل یا شماره موبایل</h3>
                                 </div>

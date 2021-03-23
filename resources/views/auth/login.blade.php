@@ -30,6 +30,7 @@
                                 <h2 class="font-weight-bold">ورود به دیدیکالا</h2>
                             </div>
                             <form action="">
+                                @include('partials.alerts')
                                 <div class="form-row-title">
                                     <h3>ایمیل یا شماره موبایل</h3>
                                 </div>
