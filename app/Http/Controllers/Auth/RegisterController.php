@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Hamcrest\Type\IsNumeric;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -25,7 +28,13 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validateForm($request);
+        $validate = $this->validateForm($request);
+
+        User::create([
+            'email'     => ($validate === 'email') ? $request->cell_email : null,
+            'cellphone' => !($validate === 'email') ? $request->cell_email : null,
+            'password'  => Hash::make($request->password),
+        ]); 
     }
 
     /**
@@ -36,10 +45,18 @@ class RegisterController extends Controller
      */
     private function validateForm(Request $request)
     {
-        $request->validate([
-            'cell_email' => 'required|max:255',
-            'password' => 'required|password|max:6|confirmed'
-        ]);
+        if (!is_numeric($request->cell_email)) {
+            $request->validate([
+                'cell_email' => 'required|email|max:255',
+                'password' => 'required|min:6|confirmed'
+            ]);
+            return 'email';
+        }
+            $request->validate([
+                'cell_email' => 'required|numeric|digits:11',
+                'password' => 'required|max:6|confirmed'
+            ]);
+            return 'cellphone';
     }
 
     

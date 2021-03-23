@@ -50,7 +50,7 @@
                                     <h3>تکرار رمز عبور</h3>
                                 </div>
                                 <div class="form-row with-icon">
-                                    <input name="password_confermation" type="password" class="input-ui pr-2" placeholder="تکرار رمز عبور">
+                                    <input name="password_confirmation" type="password" class="input-ui pr-2" placeholder="تکرار رمز عبور">
                                     <i class="mdi mdi-lock-open-variant-outline"></i>
                                 </div>
                                     @include('partials.validation-errors')
