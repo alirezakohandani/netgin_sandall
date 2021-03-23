@@ -1,5 +1,5 @@
 @if (session('registred'))
-    <div class="alert alert-success">
+    <div class="alert alert-success text-center">
         عملیات با موفقیت انجام شد.
     </div>
 @endif
