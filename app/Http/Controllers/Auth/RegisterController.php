@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+
+    /**
+     * Guest middleware
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     /**
      * Registeration form
      *
