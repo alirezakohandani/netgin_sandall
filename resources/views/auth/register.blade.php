@@ -29,7 +29,8 @@
                             <div class="section-title title-wide mb-1 no-after-title-wide">
                                 <h2 class="font-weight-bold">ثبت نام در نتگین صندل</h2>
                             </div>
-                            <form method="POST" action="">
+                            <form method="POST" action="{{route('auth.register')}}">
+                               {{ csrf_field() }}
                                 @include('partials.alerts')
                                 <div class="form-row-title">
                                     <h3>ایمیل یا شماره موبایل</h3>

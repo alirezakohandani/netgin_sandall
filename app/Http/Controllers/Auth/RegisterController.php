@@ -16,4 +16,31 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
+
+    /**
+     * User registration
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function register(Request $request)
+    {
+        $this->validateForm($request);
+    }
+
+    /**
+     * Validation register form
+     *
+     * @param Request $request
+     * @return void
+     */
+    private function validateForm(Request $request)
+    {
+        $request->validate([
+            'cell_email' => 'required|string',
+            'password' => 'required|password|confirmed'
+        ]);
+    }
+
+    
 }
