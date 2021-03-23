@@ -37,8 +37,8 @@ class RegisterController extends Controller
     private function validateForm(Request $request)
     {
         $request->validate([
-            'cell_email' => 'required|string',
-            'password' => 'required|password|confirmed'
+            'cell_email' => 'required|max:255',
+            'password' => 'required|password|max:6|confirmed'
         ]);
     }
 
