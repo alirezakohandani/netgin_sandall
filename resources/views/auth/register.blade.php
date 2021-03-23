@@ -47,6 +47,7 @@
                                     <input type="password" class="input-ui pr-2" placeholder="رمز عبور خود را وارد نمایید">
                                     <i class="mdi mdi-lock-open-variant-outline"></i>
                                 </div>
+                                    @include('partials.validation-errors')
                                 <div class="form-row mt-2">
                                     <div class="custom-control custom-checkbox float-right mt-2">
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
