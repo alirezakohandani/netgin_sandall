@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Hamcrest\Type\IsNumeric;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -30,11 +31,15 @@ class RegisterController extends Controller
     {
         $validate = $this->validateForm($request);
 
-        User::create([
+        $user = User::create([
             'email'     => ($validate === 'email') ? $request->cell_email : null,
             'cellphone' => !($validate === 'email') ? $request->cell_email : null,
             'password'  => Hash::make($request->password),
         ]); 
+
+        Auth::login($user);
+
+        return redirect()->route('home')->with('registred');
     }
 
     /**

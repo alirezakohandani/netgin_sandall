@@ -1,4 +1,4 @@
-@if (session('success'))
+@if (session('registred'))
     <div class="alert alert-success">
         عملیات با موفقیت انجام شد.
     </div>
