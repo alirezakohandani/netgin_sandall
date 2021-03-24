@@ -10,6 +10,14 @@ class LoginController extends Controller
 {
 
     /**
+     * Guest middleware
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Login form
      *
      * @return void
