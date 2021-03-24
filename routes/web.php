@@ -21,4 +21,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth' ,'as' => 'auth.'], funct
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
     Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'loginform'])->name('login.form');
     Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+    Route::get('logout', function(){
+        Illuminate\Support\Facades\Auth::logout();
+        return redirect()->route('auth.login.form');
+    })->name('logout');
 });

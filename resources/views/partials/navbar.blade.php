@@ -67,7 +67,7 @@
                                     <i class="mdi mdi-account-edit-outline"></i>ویرایش حساب کاربری
                                 </a>
                                 <div class="dropdown-divider" role="presentation"></div>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('auth.logout') }}">
                                     <i class="mdi mdi-logout-variant"></i>خروج
                                 </a>
                             </div>

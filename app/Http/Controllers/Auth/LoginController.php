@@ -10,6 +10,14 @@ class LoginController extends Controller
 {
 
     /**
+     * Guest middleware
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Login form
      *
      * @return void
@@ -30,9 +38,9 @@ class LoginController extends Controller
        
         if (!is_numeric($request->input('username'))) {
             $this->validateForm($request, 'email');
-            if (Auth::attempt(array('email' => $request->input('username'), 'password' => $request->input('password')))) {
+            if (Auth::attempt(array('email' => $request->input('username'), 'password' => $request->input('password')), true)) {
             
-                return redirect()->intended()->with('logined');
+                return redirect()->route('home')->with('logined', true);
             }
             
                 return back()->with('failed', true);
@@ -40,8 +48,8 @@ class LoginController extends Controller
 
             $this->validateForm($request, 'cellphone');
 
-            if (Auth::attempt(array('cellphone' => $request->input('username'), 'password' => $request->input('password')))) {
-                return redirect()->intended()->with('logined');
+            if (Auth::attempt(array('cellphone' => $request->input('username'), 'password' => $request->input('password')), true)) {
+                return redirect()->route('home')->with('logined', true);
             }
             
                 return back()->with('failed', true);
