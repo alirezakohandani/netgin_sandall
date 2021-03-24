@@ -29,22 +29,24 @@
                             <div class="section-title title-wide mb-1 no-after-title-wide">
                                 <h2 class="font-weight-bold">ورود به دیدیکالا</h2>
                             </div>
-                            <form action="">
+                            <form method="POST" action="{{ route('auth.login') }}">
+                                @csrf
                                 @include('partials.alerts')
                                 <div class="form-row-title">
                                     <h3>ایمیل یا شماره موبایل</h3>
                                 </div>
                                 <div class="form-row with-icon">
-                                    <input type="text" class="input-ui pr-2" placeholder="ایمیل یا شماره موبایل خود را وارد نمایید">
+                                    <input name = "username" type="text" class="input-ui pr-2" placeholder="ایمیل یا شماره موبایل خود را وارد نمایید">
                                     <i class="mdi mdi-account-circle-outline"></i>
                                 </div>
                                 <div class="form-row-title">
                                     <h3>رمز عبور</h3>
                                 </div>
                                 <div class="form-row with-icon">
-                                    <input type="password" class="input-ui pr-2" placeholder="رمز عبور خود را وارد نمایید">
+                                    <input name="password" type="password" class="input-ui pr-2" placeholder="رمز عبور خود را وارد نمایید">
                                     <i class="mdi mdi-lock-open-variant-outline"></i>
                                 </div>
+                                @include('partials.validation-errors')
                                 <div class="form-row mt-2">
                                     <div class="custom-control custom-checkbox float-right mt-2">
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
