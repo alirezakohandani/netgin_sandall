@@ -20,7 +20,7 @@ class LoginController extends Controller
     }
 
     /**
-     * User login 
+     * User login with email and cellphone
      *
      * @param Request $request
      * @return void
@@ -28,14 +28,24 @@ class LoginController extends Controller
     public function login(Request $request)
     {
        
-        $this->validateForm($request, 'email');
-       
-        if (Auth::attempt(array('email' => $request->input('username'), 'password' => $request->input('password')))) {
+        if (!is_numeric($request->input('username'))) {
+            $this->validateForm($request, 'email');
+            if (Auth::attempt(array('email' => $request->input('username'), 'password' => $request->input('password')))) {
             
-            return redirect()->intended()->with('logined');
+                return redirect()->intended()->with('logined');
+            }
+            
+                return back()->with('failed', true);
         }
-        
-            return back()->with('failed', true);
+
+            $this->validateForm($request, 'cellphone');
+
+            if (Auth::attempt(array('cellphone' => $request->input('username'), 'password' => $request->input('password')))) {
+                return redirect()->intended()->with('logined');
+            }
+            
+                return back()->with('failed', true);
+    
         
     }
 
@@ -46,7 +56,7 @@ class LoginController extends Controller
      * @param string|int $x
      * @return boolean
      */
-    private function validateForm(Request $request, $type): bool
+    private function validateForm(Request $request, $type)
     {
         if ($type === 'email') {
             return $request->validate([
