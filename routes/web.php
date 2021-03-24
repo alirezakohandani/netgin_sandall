@@ -19,4 +19,6 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth' ,'as' => 'auth.'], function() {
     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'registerationForm'])->name('register.form');
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'loginform'])->name('login.form');
+    Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 });
